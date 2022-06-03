@@ -23,27 +23,35 @@ function lakukanLooping(arrPegawai) {
 
       Contoh: ["Aisyah Nirmala", "Mansur Faisal", ...]
   */
-  let hasilLooping = [];
-  for (var i = 0; i < dataYangAkanDilooping.length; i++) {
-    hasilLooping.push(dataYangAkanDilooping[i].namaDepan + " " + dataYangAkanDilooping[i].namaBelakang);
-  }
+  hasilLooping = null;
 
   /*
     TODO 2: Buatlah sebuah variabel bernama "jumlahPria"
       yang berisi jumlah pria dari masing masing pegawai
   */
   let jumlahPria = null;
-  for (var i = 0; i < dataYangAkanDilooping.length; i++) {
-    if (dataYangAkanDilooping[i].jenisKelamin == "M") jumlahPria += 1;
-  }
 
   /*
     TODO 3: Buatlah sebuah variabel bernama "jumlahWanita"
       yang berisi jumlah wanita dari masing masing pegawai
   */
   let jumlahWanita = null;
-  for (var i = 0; i < dataYangAkanDilooping.length; i++) {
-    if (dataYangAkanDilooping[i].jenisKelamin == "F") jumlahWanita += 1;
+  // change to array
+  hasilLooping = [];
+  for (let i = 0; i < dataYangAkanDilooping.length; i++) {
+    // data Looping
+    let loop = "";
+    loop += dataYangAkanDilooping[i].namaDepan + " " + dataYangAkanDilooping[i].namaBelakang;
+    // add to array
+    hasilLooping.push(loop);
+    // menghitung jumlah Pria
+    if (dataYangAkanDilooping[i].jenisKelamin === "M") {
+      jumlahPria += 1;
+    }
+    // menghitung jumlah Wanita
+    if (dataYangAkanDilooping[i].jenisKelamin === "F") {
+      jumlahWanita += 1;
+    }
   }
 
   /*
@@ -59,14 +67,14 @@ function lakukanLooping(arrPegawai) {
   */
   let komentar = null;
   if (jumlahPria == jumlahWanita) {
-    komentar = "Jumlah Pria lebih banyak dari Wanita";
-  } else if (jumlahPria > jumlahWanita) {
-    komentar = "Jumlah Wanita lebih dari banyak";
-  } else {
     komentar = "Jumlah Pria dan Wanita berimbang";
+  } else {
+    if (jumlahPria > jumlahWanita) {
+      komentar = "Jumlah Pria lebih banyak dari Wanita";
+    } else {
+      komentar = "Jumlah Wanita lebih banyak dari Pria";
+    }
   }
-
-  console.log(komentar);
 
   // ! JANGAN DIMODIFIKASI
   return {
